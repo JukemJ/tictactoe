@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Title in the tab</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<section>
+			<div id="boxOne" onClick="game.playGame(this.id, 0, 0)"></div>
+			<div id="boxTwo" onClick="game.playGame(this.id, 0, 1)"></div>
+			<div id="boxThree" onClick="game.playGame(this.id, 0, 2)"></div></section>
+		<section>
+			<div id="boxFour" onClick="game.playGame(this.id, 1, 0)"></div>
+			<div id="boxFive" onClick="game.playGame(this.id, 1, 1)"></div>
+			<div id="boxSix" onClick="game.playGame(this.id, 1, 2)"></div></section>
+		<section>
+			<div id="boxSeven" onClick="game.playGame(this.id, 2, 0)"></div>
+			<div id="boxEight" onClick="game.playGame(this.id, 2, 1)"></div>
+			<div id="boxNine" onClick="game.playGame(this.id, 2, 2)"></div></section>
+
+		<h1 id="oWin">O Wins!</h1>
+		<h1 id="xWin">X Wins!</h1>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
