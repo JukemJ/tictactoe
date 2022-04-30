@@ -1,6 +1,7 @@
 class TicTacToe {
   constructor() {
     this.playerTurn = 'X'
+    this.turnCount = 0
     this.gameBoard = [
       [0, 0, 0],
       [0, 0, 0],
@@ -12,6 +13,7 @@ class TicTacToe {
 //-1 for O
 
   playGame(elementID, column, row){
+    this.turnCount++
     document.querySelector(`#${elementID}`).innerText = this.playerTurn
     if (this.playerTurn == 'X'){ 
       this.gameBoard[column][row] = 1 
@@ -21,32 +23,10 @@ class TicTacToe {
       this.gameBoard[column][row] = -1
       this.playerTurn = 'X'
     }
-    this.rowCheck()
-    this.columnCheck()
-    this.diagonalCheck()
+    this.winCheck()
   }
 
-
-  rowCheck(){
-    for (let i = 0; i < 3; i++){
-      let check = this.gameBoard[i].reduce((a,b) => a+b)
-
-      if (check == 3) document.querySelector('#xWin').style.display = 'block'
-      if (check == -3) document.querySelector('#oWin').style.display = 'block'
-    }
-  }
-
-  columnCheck(){
-    for (let i = 0; i < 3; i++){
-      let tempArr = [this.gameBoard[0][i],this.gameBoard[1][i],this.gameBoard[2][i]]
-      let check = tempArr.reduce((a,b) => a+b)
-
-      if (check == 3) document.querySelector('#xWin').style.display = 'block'
-      if (check == -3) document.querySelector('#oWin').style.display = 'block'
-    }
-  }
-
-  diagonalCheck(){
+  winCheck(){
     let backslashDiagonal = [this.gameBoard[0][0],this.gameBoard[1][1],this.gameBoard[2][2]]
     let check = backslashDiagonal.reduce((a,b) => a+b)
 
@@ -55,6 +35,15 @@ class TicTacToe {
 
     if (check == 3 || checkSum == 3) document.querySelector('#xWin').style.display = 'block'
     if (check == -3 || checkSum == -3) document.querySelector('#oWin').style.display = 'block'
+
+    for (let i = 0; i < 3; i++){
+      let rowCheck = this.gameBoard[i].reduce((a,b) => a+b)
+      let columnCheckArr = [this.gameBoard[0][i],this.gameBoard[1][i],this.gameBoard[2][i]]
+      let columnCheck = columnCheckArr.reduce((a,b) => a+b)
+
+      if (rowCheck == 3 || columnCheck == 3) document.querySelector('#xWin').style.display = 'block'
+      if (rowCheck == -3 || columnCheck == -3) document.querySelector('#oWin').style.display = 'block'
+    }
   }
 }
 
